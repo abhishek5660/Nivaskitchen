@@ -707,7 +707,7 @@ header a.btn:hover {
 
 /* Gradient Animation */
 header {
-    background-image: url('https://videos.pexels.com/video-files/6894947/6894947-uhd_2560_1440_30fps.mp4');
+    background-image: url('./nivashomepage.jpg');
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
 }
