@@ -708,7 +708,7 @@ header a.btn:hover {
 /* Gradient Animation */
 header {
   background-image: url('https://www.worldofwallpaper.com/media/wysiwyg/DEC095_Subway_Tiles_Black_ae1.jpg');
- background-size: cover; /* Covers the entire header */
+ background-size: 200px; /* Covers the entire header */
   background-repeat: no-repeat; /* Prevents tiling */
   background-position: center; /* Centers the image */
 }
