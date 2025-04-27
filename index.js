@@ -92,6 +92,66 @@ callBtn.addEventListener("click", () => {
 });
 
 
+const chatbotToggle = document.getElementById('chatbot-toggle');
+const chatbot = document.getElementById('chatbot');
+const closeBtn = document.getElementById('close-btn');
+const sendBtn = document.getElementById('send-btn');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotMessages = document.getElementById('chatbot-messages');
+
+// Open chat
+chatbotToggle.addEventListener('click', () => {
+  chatbot.style.display = 'flex';
+  chatbotToggle.style.display = 'none';
+});
+
+// Close chat
+closeBtn.addEventListener('click', () => {
+  chatbot.style.display = 'none';
+  chatbotToggle.style.display = 'flex';
+});
+
+// Send message
+sendBtn.addEventListener('click', sendMessage);
+chatbotInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+  const userInput = chatbotInput.value.trim();
+  if (userInput === '') return;
+
+  appendMessage(userInput, 'user-msg');
+  chatbotInput.value = '';
+
+  setTimeout(() => {
+    botReply(userInput);
+  }, 1000);
+}
+
+function appendMessage(msg, className) {
+  const div = document.createElement('div');
+  div.className = className;
+  div.innerText = msg;
+  chatbotMessages.appendChild(div);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function botReply(userInput) {
+  let reply = '';
+
+  if (userInput.toLowerCase().includes('hello') || userInput.toLowerCase().includes('hi')) {
+    reply = 'Hello! 👋 Welcome to Niva\'s Kitchen! 🍽️ How can I assist you today?';
+  } else if (userInput.toLowerCase().includes('menu')) {
+    reply = 'Our Menu 🍴 includes Indian Thali, Italian Pasta, Fresh Juices, and more! 😋';
+  } else if (userInput.toLowerCase().includes('order')) {
+    reply = 'You can place an order by calling 📞 us or visiting the Order section on the website.';
+  } else {
+    reply = 'Sorry, I didn\'t get that 🤔. Please ask about Menu, Order, or any Service.';
+  }
+
+  appendMessage(reply, 'bot-msg');
+}
 
 
 
